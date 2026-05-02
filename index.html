@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to LearnX - Learn to Code, Build, and Grow</title>
+    <meta name="description"
+        content="LearnX is your all-in-one coding learning platform. Discover courses, join live classes, solve problems, and grow your skills." />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <style>
+        /* ── Reset ── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        html {
+            height: 100%;
+            font-family: 'Sora', 'DM Sans', sans-serif;
+            overflow: hidden;
+            background: #121212;
+            color: #FFFFFF;
+        }
+
+        /* ── Brand Theme Colors (from Dashboard) ── */
+        :root {
+            --color-bg: #121212;
+            --color-accent: #1DB954;
+            /* LearnX Green */
+            --color-text: #FFFFFF;
+            --color-text-sec: #C8C8C8;
+            --color-red-valorant: #FF4444;
+            /* Valorant-style Red, also matching dashboard live color */
+        }
+
+        /* ── Main Container ── */
+        .hero-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* ── Video/Background ── */
+        .video-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            filter: brightness(0.5);
+            /* Darken for better text contrast */
+        }
+
+        /* ── Overlay and Effects ── */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(18, 18, 18, 0.4);
+            /* Subtler tint than image, using background color */
+            z-index: 0;
+        }
+
+        /* V-Beams - Re-created and re-colored to brand accent */
+        .v-beams-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .v-beam {
+            position: absolute;
+            top: 0;
+            width: 2px;
+            height: 150%;
+            background: linear-gradient(to bottom, transparent, var(--color-accent), transparent);
+            filter: blur(2px) drop-shadow(0 0 10px rgba(29, 185, 84, 0.6));
+            opacity: 0.8;
+            animation: beamPulse 3s infinite ease-in-out;
+        }
+
+        @keyframes beamPulse {
+
+            0%,
+            100% {
+                opacity: 0.6;
+                filter: blur(2px) drop-shadow(0 0 8px rgba(29, 185, 84, 0.4));
+            }
+
+            50% {
+                opacity: 0.9;
+                filter: blur(2px) drop-shadow(0 0 14px rgba(29, 185, 84, 0.8));
+            }
+        }
+
+        /* Positioning beams like the image, angled towards center */
+        .beam-1 {
+            left: 20%;
+            transform: rotate(20deg);
+        }
+
+        .beam-2 {
+            left: 40%;
+            transform: rotate(10deg);
+        }
+
+        .beam-3 {
+            right: 40%;
+            transform: rotate(-10deg);
+        }
+
+        .beam-4 {
+            right: 20%;
+            transform: rotate(-20deg);
+        }
+
+        /* ── Content ── */
+        .content-box {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        /* Logo / Title - Mimics Valorant structure */
+        .learnx-logo-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .logo-symbol {
+            width: 42px;
+            height: 42px;
+            background: var(--color-accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 24px;
+            color: #000;
+            flex-shrink: 0;
+        }
+
+        .brand-name {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--color-text);
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            /* Matching case/impact of image logo */
+        }
+
+        /* Tagline */
+        .tagline {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-text-sec);
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CTA Button - Primary Button Style from Dashboard + Valorant Red */
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-red-valorant);
+            color: #FFFFFF;
+            border-radius: 12px;
+            padding: 16px 36px;
+            font-weight: 800;
+            font-size: 16px;
+            text-decoration: none;
+            font-family: inherit;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 4px 20px rgba(255, 68, 68, 0.4);
+            transition: opacity 0.15s, transform 0.1s;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+        }
+
+        .cta-button:active {
+            transform: scale(0.98);
+        }
+
+        /* ── Keyboard focus ring ── */
+        .cta-button:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="hero-container">
+        <!-- V-Beams re-colored to green, framing the content -->
+        <div class="v-beams-container">
+            <div class="v-beam beam-1"></div>
+            <div class="v-beam beam-2"></div>
+            <div class="v-beam beam-3"></div>
+            <div class="v-beam beam-4"></div>
+        </div>
+
+        <div class="overlay"></div>
+
+        <!-- content similar to image but with LearnX branding -->
+        <div class="content-box">
+            <div class="learnx-logo-title">
+                <!-- Using Logo Symbol and Text from DashboardUser panel/Sidebar -->
+                <div class="logo-symbol" aria-hidden="true">L</div>
+                <h1 class="brand-name">LearnX</h1>
+            </div>
+
+            <!-- Tagline structure similar to image's subtext -->
+            <p class="tagline">LearnX – An all-in-one coding platform featuring courses with direct practice</p>
+
+            <!-- Red CTA button similar to image but with relevant text -->
+            <a href="Extras/learnx-dashboard .html" class="cta-button" aria-label="Go to the dashboard to start learning">
+                START LEARNING FOR FREE
+            </a>
+        </div>
+
+    </main>
+</body>
+
+</html>
